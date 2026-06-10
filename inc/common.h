@@ -1,17 +1,19 @@
 #ifndef INC_COMMON_H_
 #define INC_COMMON_H_
 
-#include "stdio.h"
-#include "stdint.h"
+#include <stdio.h>
+#include <stdint.h>
 
 
 #define SIZE 3
 #define MAX_NODES 1000000
 
-#define DIR_NORTH 0
-#define DIR_SOUTH 1
-#define DIR_EAST  2
-#define DIR_WEST  3
+#define DIR_NORTH 0x0001
+#define DIR_SOUTH 0x0010
+#define DIR_EAST  0x0100
+#define DIR_WEST  0x1000
+
+#define GET_REVERSE_DIR(dir) ((((dir) & 0x5) << 1) | (((dir) & 0xA) >> 1))
 
 typedef struct{
     char tiles[SIZE][SIZE];
@@ -25,6 +27,7 @@ typedef struct{
 typedef struct{
     Coordinate tiles;
     Point empty;
+    char last_dir;
     int g;  // cost from start
     int h;  // estimated cost to goal
     int f;  // g + h
