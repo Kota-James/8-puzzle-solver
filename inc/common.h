@@ -13,11 +13,7 @@
 #define DIR_EAST  0x0100
 #define DIR_WEST  0x1000
 
-#define GET_REVERSE_DIR(dir) ((((dir) & 0x5) << 1) | (((dir) & 0xA) >> 1))
-
-typedef struct{
-    char tiles[SIZE][SIZE];
-}Coordinate;
+#define GET_REVERSE_DIR(dir) ((((dir) & 0x0101) << 4) | (((dir) & 0x1010) >> 4))
 
 typedef struct{
     int x;
@@ -25,21 +21,21 @@ typedef struct{
 }Point;
 
 typedef struct{
-    Coordinate tiles;
+    char tiles[SIZE][SIZE];
     Point empty;
-    char last_dir;
+    char last_move;
     int g;  // cost from start
     int h;  // estimated cost to goal
     int f;  // g + h
 }Node;
 
 /*
-// Coordinate
-(0, 2) (1, 2) (2, 2) 
+// Coordinate (Standard Array Layout)
+(0, 0) (1, 0) (2, 0) 
 
 (0, 1) (1, 1) (2, 1) 
 
-(0, 0) (1, 0) (2, 0) 
+(0, 2) (1, 2) (2, 2) 
 */
 
 /*
