@@ -30,6 +30,12 @@ Node test = {
     printf("h2 = %d\n", test.h);
 
     printf("ifgoal %d\n", check_goal(test));
+
+    printf("can_move 0x%04x\n", can_move((Point){1,1}));
+    printf("can_move 0x%04x\n", can_move((Point){0,0}));
+    printf("can_move 0x%04x\n", can_move((Point){1,2}));
+    printf("can_move 0x%04x\n", can_move((Point){2,1}));
+
     
     return 0;
 }

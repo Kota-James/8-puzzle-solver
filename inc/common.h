@@ -13,7 +13,7 @@
 #define DIR_EAST  0x0100
 #define DIR_WEST  0x1000
 
-#define GET_REVERSE_DIR(dir) ((((dir) & 0x5) << 1) | (((dir) & 0xA) >> 1))
+#define GET_REVERSE_DIR(dir) ((((dir) & 0x0101) << 4) | (((dir) & 0x1010) >> 4))
 
 typedef struct{
     int x;

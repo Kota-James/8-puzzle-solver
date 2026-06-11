@@ -57,6 +57,16 @@ int calc_h2(Node node){
     return temp;
 }
 
+int can_move(Point p){
+    int flags = 0;
+    if(p.x > 0)     flags |= DIR_WEST;
+    if(p.x < SIZE-1) flags |= DIR_EAST;
+    if(p.y > 0)     flags |= DIR_NORTH;
+    if(p.y < SIZE-1) flags |= DIR_SOUTH;
+    return flags;
+}
+
+
 int check_goal(Node node){
     for(int i = 0; i < SIZE; i++){
         for(int j = 0; j < SIZE; j++){
