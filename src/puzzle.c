@@ -57,6 +57,17 @@ int calc_h2(Node node){
     return temp;
 }
 
+int check_goal(Node node){
+    for(int i = 0; i < SIZE; i++){
+        for(int j = 0; j < SIZE; j++){
+            if(node.tiles[i][j] != GOAL_TILES[i][j]){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 
 void display_tiles(Node node){
     for(int i = 0; i < SIZE; i++){
