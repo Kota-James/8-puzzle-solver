@@ -16,18 +16,14 @@
 #define GET_REVERSE_DIR(dir) ((((dir) & 0x5) << 1) | (((dir) & 0xA) >> 1))
 
 typedef struct{
-    char tiles[SIZE][SIZE];
-}Coordinate;
-
-typedef struct{
     int x;
     int y;
 }Point;
 
 typedef struct{
-    Coordinate tiles;
+    char tiles[SIZE][SIZE];
     Point empty;
-    char last_dir;
+    char last_move;
     int g;  // cost from start
     int h;  // estimated cost to goal
     int f;  // g + h
